@@ -3,4 +3,55 @@ module GraalFFI
 
   class Error < StandardError
   end
+
+  class CreateIsolateError < Error
+  end
+
+  class Builder
+    def initialize: (java_paths: ::Array[::String], output_path: ::String) -> void
+
+    def execute: () -> void
+
+    def __dir__: () -> ::String
+
+    private
+
+    attr_reader java_paths: ::Array[::String]
+    attr_reader output_path: ::String
+    attr_reader output_dir: ::String
+    attr_reader options: ::Array[::String]
+
+    def random_class_path: () -> ::String
+  end
+
+  class CreateIsolateParams < FFI::Struct
+  end
+
+  module Library
+    include FFI::Library
+
+    private
+
+    ALIAS_PREFIX: ::String
+
+    def private_class_method: (untyped) -> void
+
+    def graal_create_isolate: (CreateIsolateParams? params, FFI::MemoryPointer graal_isolate_t, FFI::MemoryPointer graal_isolatethread_t) -> ::Integer
+
+    def graal_attach_thread: (FFI::Pointer graal_isolate_t, FFI::MemoryPointer graal_isolatethread_t) -> ::Integer
+
+    def graal_detach_thread: (FFI::Pointer graal_isolatethread_t) -> ::Integer
+
+    def graal_tear_down_isolate: (FFI::Pointer graal_isolatethread_t) -> ::Integer
+
+    def graal_detach_all_threads_and_tear_down_isolate: (FFI::Pointer graal_isolatethread_t) -> ::Integer
+
+    def graal_ffi_lib: (*::String) -> void
+
+    def graal_attach_function: (::String func, ::Array[::Symbol] args, ?::Symbol? returns, ?::Hash[untyped, untyped]? options) -> void
+
+    def private_attach_function: (*untyped) -> void
+
+    def with_isolate: () { (FFI::Pointer) -> untyped } -> untyped
+  end
 end

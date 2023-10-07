@@ -2,6 +2,7 @@
 
 target :lib do
   signature 'sig'
+  signature 'sig_private'
 
   check 'lib'
 end

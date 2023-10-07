@@ -3,6 +3,7 @@
 require 'simplecov'
 SimpleCov.start do
   enable_coverage :branch
+  add_filter '/lib/graal_ffi/builder.rb'
   add_filter '/spec/'
 end
 SimpleCov.minimum_coverage 100

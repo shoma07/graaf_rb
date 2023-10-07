@@ -1,6 +1,12 @@
 # GraalFFI
 
-Ruby FFI for [Built a Shared Library by GraalVM Native Image](https://www.graalvm.org/22.3/reference-manual/native-image/guides/build-native-shared-library/)
+Ruby FFI for Built a Shared Library by GraalVM Native Image
+
+## Motivation
+
+Using a Shared Library built with GraalVM Native Image requires built-in control over `IsolateThread`.
+
+This gem manages the control of `IsolateThread`.
 
 ## Installation
 
@@ -15,11 +21,18 @@ If bundler is not being used to manage dependencies, install the gem by executin
 ## Usage
 
 ```ruby
-module MyLibrary
+module Example
   extend GraalFFI::Library
 
+  graal_ffi_lib('libexample.so')
+
+  # @note
+  #   The first argument `graal_isolatethread_t*` does not need to be specified.
   graal_attach_function :add, [:int, :int], :int
 end
+
+Example.add(1, 2)
+# => 3
 ```
 
 ## Development
