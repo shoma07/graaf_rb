@@ -1,0 +1,8 @@
+version: "3"
+
+services:
+  gem:
+    build: .
+    volumes:
+      - .:/usr/src/gem
+    working_dir: /usr/src/gem

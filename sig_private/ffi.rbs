@@ -1,0 +1,30 @@
+module FFI
+  module Type
+    class Mapped
+    end
+  end
+
+  module Library
+    def ffi_lib: (*::String) -> void
+
+    def attach_function: (*untyped) -> ::FFI::VariadicInvoker
+  end
+
+  class VariadicInvoker
+  end
+
+  class MemoryPointer
+    def initialize: (::Symbol type) -> void
+
+    def read_pointer: () -> Pointer
+  end
+
+  class Pointer
+  end
+
+  class Struct
+    def self.layout: (*::Symbol) -> void
+
+    def self.by_ref: () -> Type::Mapped
+  end
+end

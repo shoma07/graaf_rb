@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require 'graaf'
+require 'optparse'
+
+options = { o: "#{Dir.pwd}/libgraaf" }
+OptionParser
+  .new
+  .tap { |opt| opt.on('-o [VAL]', String) }
+  .parse!(ARGV, into: options)
+
+Graaf::Builder.new(java_paths: ARGV, output_path: options[:o]).execute
