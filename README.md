@@ -1,24 +1,26 @@
-# GraalFfi
+# GraalFFI
 
-TODO: Delete this and the text below, and describe your gem
-
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/graal_ffi`. To experiment with that code, run `bin/console` for an interactive prompt.
+Ruby FFI for [Built a Shared Library by GraalVM Native Image](https://www.graalvm.org/22.3/reference-manual/native-image/guides/build-native-shared-library/)
 
 ## Installation
 
-TODO: Replace `UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG` with your gem name right after releasing it to RubyGems.org. Please do not do it earlier due to security reasons. Alternatively, replace this section with instructions to install your gem from git if you don't plan to release to RubyGems.org.
-
 Install the gem and add to the application's Gemfile by executing:
 
-    $ bundle add UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG
+    $ bundle add graal_ffi
 
 If bundler is not being used to manage dependencies, install the gem by executing:
 
-    $ gem install UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG
+    $ gem install graal_ffi
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+module MyLibrary
+  extend GraalFFI::Library
+
+  graal_attach_function :add, [:int, :int], :int
+end
+```
 
 ## Development
 
@@ -36,4 +38,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the GraalFfi project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/graal_ffi/blob/main/CODE_OF_CONDUCT.md).
+Everyone interacting in the GraalFFI project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/graal_ffi/blob/main/CODE_OF_CONDUCT.md).

@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
-require_relative "graal_ffi/version"
+require_relative 'graal_ffi/version'
 
-module GraalFfi
+# GraalFFI
+module GraalFFI
+  # GraalFFI::Error
   class Error < StandardError; end
-  # Your code goes here...
 end
