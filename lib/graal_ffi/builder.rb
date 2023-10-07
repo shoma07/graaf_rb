@@ -41,7 +41,7 @@ module GraalFFI
     end
 
     # @!attribute [r] java_paths
-    # @return [String]
+    # @return [Array<String>]
     attr_reader :java_paths
     # @!attribute [r] output_path
     # @return [String]

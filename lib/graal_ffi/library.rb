@@ -35,6 +35,13 @@ module GraalFFI
 
     private
 
+    # @param args [Array]
+    # @return [void]
+    def private_attach_function(*args)
+      attach_function(*args)
+      private_class_method(args[0])
+    end
+
     # @param names [Array<String>]
     # @return [void]
     def graal_ffi_lib(*names)
@@ -62,13 +69,6 @@ module GraalFFI
       define_singleton_method(func) do |*override_args|
         with_isolate { |thread| __send__(alias_method_name, thread, *override_args) }
       end
-    end
-
-    # @param args [Array]
-    # @return [void]
-    def private_attach_function(*args)
-      attach_function(*args)
-      private_class_method(args[0])
     end
 
     # @yieldparam thread [FFI::Pointer]
